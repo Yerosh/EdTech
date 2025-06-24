@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct EdTechApp: App {
+    @StateObject var authVM = AuthViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if authVM.isAuthenticated {
+                MainTabView(authVM: authVM)
+            } else {
+                RegistrationView(authVM: authVM)
+            }
+
         }
     }
 }
