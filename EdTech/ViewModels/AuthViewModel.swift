@@ -17,7 +17,7 @@ class AuthViewModel: ObservableObject {
     }
 
     func login(username: String, password: String) {
-        if let user = users.first(where: { $0.username == username && $0.password == password }) {
+        if let user = users.first(where: { $0.email == username && $0.password == password }) {
             currentUser = user
             isAuthenticated = true
         }

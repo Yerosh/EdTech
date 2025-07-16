@@ -63,13 +63,53 @@ struct RegistrationView: View {
                     .foregroundColor(Color("0D171C"))
                     .padding(.bottom, 12)
                 Group {
-                    validatedField(title: "Логин", text: $viewModel.username, error: viewModel.usernameError)
+                    validatedField(title: "Email", text: $viewModel.email, error: viewModel.emailError)
                     validatedField(title: "Пароль", text: $viewModel.password, error: viewModel.passwordError)
                     validatedField(title: "Повторите пароль", text: $viewModel.confirmPassword, error: viewModel.confirmPasswordError)
                     validatedField(title: "Имя", text: $viewModel.firstName, error: viewModel.firstNameError)
                     validatedField(title: "Фамилия", text: $viewModel.lastName, error: viewModel.lastNameError)
-                    validatedField(title: "Email родителя", text: $viewModel.parentEmail, error: viewModel.parentEmailError)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Тип пользователя")
+                            .font(.custom("Spline Sans", size: 16))
+                            .fontWeight(.regular)
+                            .foregroundColor(Color("0D171C"))
+                        
+                        if let userTypeError = viewModel.userTypeError {
+                            Text(userTypeError)
+                                .foregroundColor(.red)
+                                .font(.caption)
+                        }
+                        
+                        Menu {
+                            ForEach(viewModel.userTypes, id: \.self) { type in
+                                Button {
+                                    viewModel.userType = type
+                                } label: {
+                                    Text(type)
+                                        .foregroundColor(Color("0D171C"))
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text(viewModel.userType.isEmpty ? "" : viewModel.userType)
+                                    .foregroundColor(viewModel.userType.isEmpty ? .gray : Color("0D171C"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                                Image("dropdown")
+                                    .foregroundColor(Color("4A829C"))
+                            }
+                            .padding(12)
+                            .background(Color("E8F0F2"))
+                            .cornerRadius(12)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(viewModel.userTypeError != nil ? Color.red : Color.clear, lineWidth: 1)
+                            )
+                        }
+                    }
+
                 }
+                
 
                 Button("Создать аккаунт") {
                     viewModel.register(authVM: authVM)

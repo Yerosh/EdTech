@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State private var login: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
     @ObservedObject var authVM: AuthViewModel
     
@@ -16,7 +16,7 @@ struct LoginView: View {
         VStack(spacing: 12) {
             Image("loginImage")
             
-            TextField("Логин", text: $login)
+            TextField("Email", text: $email)
                 .padding(12)
                 .background(Color("E8F0F2"))
                 .cornerRadius(12)
@@ -28,7 +28,7 @@ struct LoginView: View {
                 .padding(.top, 12)
             
             Button("Войти") {
-                authVM.login(username: login, password: password)
+                authVM.login(username: email, password: password)
             }
             .frame(width: 84, height: 40)
             .background(Color("42B2EB"))
