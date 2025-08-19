@@ -18,7 +18,6 @@ struct EdTechApp: App {
             } else {
                 RegistrationView(authVM: authVM)
             }
-
         }
     }
 }

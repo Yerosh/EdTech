@@ -1,12 +1,13 @@
 //
-//  Course.swift
+//  Sections.swift
 //  EdTech
 //
-//  Created by Yernur Adilbek on 16.07.2025.
+//  Created by Yernur Adilbek on 19.08.2025.
 //
+
 import SwiftUI
 
-struct Course: Identifiable {
+struct Section: Identifiable {
     let id = UUID()
     let imageName: String
     let title: String
