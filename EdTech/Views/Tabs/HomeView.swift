@@ -11,6 +11,7 @@ struct HomeView: View {
     var user: User
     @State private var searchText = ""
     
+    
     let courses: [Course] = [
         Course(imageName: "math", title: "Математика", destination: AnyView(MathView())),
         Course(imageName: "eng", title: "Английский", destination: AnyView(EnglishView()))
@@ -23,6 +24,7 @@ struct HomeView: View {
         Course(imageName: "math", title: "Математика", destination: AnyView(EnglishView())),
         Course(imageName: "eng", title: "Англиский", destination: AnyView(EnglishView()))
     ]
+
     
     var body: some View {
         NavigationStack {

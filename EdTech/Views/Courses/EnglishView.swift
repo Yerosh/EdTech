@@ -69,7 +69,7 @@ struct EnglishView: View {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }) {
-                        Image(systemName: "chevron.left")
+                        Image("chevronLeft")
                             .foregroundColor(.black)
                     }
                 }
